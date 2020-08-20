@@ -34,7 +34,7 @@ def open_pic():  # открытие картинки
         print("Картинка не была открыта")
 
 
-def move():  # перемещение по карусели картинок
+def move():  # перемещение по карусели картинок и проверка на совпадение картинки
     try:
         move_right = driver.find_element_by_class_name('cl-viewer-navigate__item_right')
         check_image_1 = driver.current_url
