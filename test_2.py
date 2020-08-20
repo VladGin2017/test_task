@@ -1,42 +1,40 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException
 
 driver = webdriver.Chrome()
 driver.get('https://yandex.ru/')
 
 
-def search_image_button():
+def search_image_button():  # поиск кнопки "Картинки"
     try:
         search = driver.find_element_by_link_text('Картинки')
-        print(search.text)
         search.send_keys(Keys.ENTER)
-        search.send_keys(Keys.CONTROL + Keys.TAB)
 
-    except:
+    except NoSuchElementException:
         print("Кнопка не найдена")
 
 
-def check_link():
+def check_link():  # проверка перехода по правильному URL
     driver.switch_to.window(driver.window_handles[1])
     if driver.current_url == 'https://yandex.ru/images/':
-        print(driver.current_url)
         print("Ссылки совпадают")
     else:
         print("Ссылки неодинаковы")
 
 
-def open_pic():
+def open_pic():  # открытие картинки
     try:
         open = driver.find_element_by_class_name('cl-teaser__link')
         open.click()
         print("Картинка открыта")
 
-    except:
+    except NoSuchElementException:
         print("Картинка не была открыта")
 
 
-def move():
+def move():  # перемещение по карусели картинок
     try:
         move_right = driver.find_element_by_class_name('cl-viewer-navigate__item_right')
         check_image_1 = driver.current_url
@@ -50,7 +48,7 @@ def move():
         else:
             print("Картинки несовпадают")
 
-    except:
+    except NoSuchElementException:
         print("Ошибка")
 
 
@@ -61,3 +59,4 @@ time.sleep(1)
 open_pic()
 time.sleep(1)
 move()
+driver.quit()
