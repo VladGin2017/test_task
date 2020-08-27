@@ -10,10 +10,10 @@ def browser():
     driver.quit()
 
 
-def test_yandex_search(browser):
-    yandex_main_page = YaSearch(browser)
-    yandex_main_page.to_site()
-    yandex_main_page.entering("Тензор")
-    yandex_main_page.checking_suggests()
-    yandex_main_page.clicking_enter()
+def testing(browser):
+    test_ = YaSearch(browser)
+    test_.to_site()
+    test_.entering("Тензор")
+    test_.checking_suggests()
+    test_.clicking_enter()
 
