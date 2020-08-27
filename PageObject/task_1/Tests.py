@@ -13,7 +13,7 @@ def browser():
 def testing(browser):
     test_ = YaSearch(browser)
     test_.to_site()
-    test_.entering("Тензор")
+    test_.searching_box("Тензор")
     test_.checking_suggests()
     test_.clicking_enter()
 

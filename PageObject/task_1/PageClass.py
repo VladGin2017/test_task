@@ -11,15 +11,29 @@ class Locators:
 
 
 class YaSearch(MethodsForApp):
-    def entering(self, word):
-        searchbox = self.find_search_box(Locators.Search_box)
-        searchbox.send_keys(word)
-        return searchbox
+    def searching_box(self, word):
+        try:
+            searchbox = self.find_search_box(Locators.Search_box)
+            searchbox.send_keys(word)
+            print("Поискавая строка найдена")
+            time.sleep(3)
+        except:
+            print("Поисковая строка не найдена")
 
     def checking_suggests(self):
-        return self.check_suggests(Locators.Suggests)
+        try:
+            suggests = self.check_suggests(Locators.Suggests)
+            print("Подсказки найдены")
+            time.sleep(3)
+        except:
+            print("Подсказки не найдены")
 
     def clicking_enter(self):
-        click = self.find_search_box(Locators.Enter)
-        click.send_keys(Keys.ENTER)
-        time.sleep(10)
+        try:
+            click = self.find_search_box(Locators.Enter)
+            click.send_keys(Keys.ENTER)
+            print("Клавиша ENTER нажата")
+            time.sleep(3)
+        except:
+            print("Нет реакции на клавишу ENTER")
+
